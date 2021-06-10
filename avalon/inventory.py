@@ -41,8 +41,12 @@ DEFAULTS = {
                 "label": "Shell"
             },
             {
-                "name": "maya2016",
-                "label": "Autodesk Maya 2016"
+                "name": "maya2019",
+                "label": "Autodesk Maya 2019"
+            },
+            {
+                "name": "maya2020",
+                "label": "Autodesk Maya 2020"
             },
             {
                 "name": "nuke10",
@@ -51,11 +55,15 @@ DEFAULTS = {
         ],
         "tasks": [
             {"name": "model"},
-            {"name": "render"},
-            {"name": "animate"},
-            {"name": "rig"},
+            {"name": "groom"},
             {"name": "lookdev"},
+            {"name": "rig"},
             {"name": "layout"},
+            {"name": "anim"},
+            {"name": "cfx"},
+            {"name": "fx"},
+            {"name": "lighting"},
+            {"name": "comp"},
         ],
         "template": {
             "work":
@@ -68,27 +76,8 @@ DEFAULTS = {
     },
     "inventory": {
         "schema": "avalon-core:inventory-1.0",
-        "assets": [
-            {
-                "name": "hero",
-                "label": "Hero"
-            },
-            {
-                "name": "villain"
-            }
-        ],
-        "film": [
-            {
-                "name": "shot1",
-                "frameStart": 1000,
-                "frameEnd": 1143
-            },
-            {
-                "name": "shot2",
-                "frameStart": 1000,
-                "frameEnd": 1081
-            },
-        ]
+        "assets": [],
+        "shots": []
     }
 }
 
@@ -113,7 +102,7 @@ def create_asset(name, silo, data, parent):
         raise RuntimeError("%s already exists" % name)
 
     return io.insert_one({
-        "schema": "avalon-core:asset-2.0",
+        "schema": "avalon-core:asset-3.0",
         "name": name,
         "silo": silo,
         "parent": parent,
